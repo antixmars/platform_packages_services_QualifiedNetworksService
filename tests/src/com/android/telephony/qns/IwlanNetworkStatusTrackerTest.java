@@ -256,7 +256,7 @@ public class IwlanNetworkStatusTrackerTest extends QnsTest {
         ArgumentCaptor<ConnectivityManager.NetworkCallback> callbackArg =
                 ArgumentCaptor.forClass(ConnectivityManager.NetworkCallback.class);
         verify(mMockConnectivityManager, atLeastOnce())
-                .registerDefaultNetworkCallback(callbackArg.capture(), isA(Handler.class));
+                .registerSystemDefaultNetworkCallback(callbackArg.capture(), isA(Handler.class));
         ConnectivityManager.NetworkCallback networkCallback = callbackArg.getValue();
         assertNotNull(networkCallback);
         return networkCallback;

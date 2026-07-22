@@ -253,7 +253,9 @@ class IwlanNetworkStatusTracker {
     private void registerDefaultNetworkCb() {
         if (mDefaultNetworkCallback == null) {
             mDefaultNetworkCallback = new DefaultNetworkCallback();
-            mConnectivityManager.registerDefaultNetworkCallback(
+            // The app default can be an always-on VPN. IWLAN qualification needs the
+            // underlying system default so Wi-Fi link properties remain visible.
+            mConnectivityManager.registerSystemDefaultNetworkCallback(
                     mDefaultNetworkCallback, mNetCbHandler);
         }
     }
